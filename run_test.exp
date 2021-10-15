@@ -1,0 +1,39 @@
+#!/usr/bin/expect -f
+
+set timeout 300
+# set send_slow {1 .1}
+
+spawn bash -c "/run_qemu.sh"
+exec sleep 5
+puts "Start testing.\n"
+expect "*login: *"
+send "root\n"
+expect "Password: "
+send "penglai\n"
+expect "# "
+send "sh install.sh\n"
+expect {
+    "*succeed*" {
+        sleep 1
+        puts "install succeeded\n"
+    }
+    timeout {
+        exit -1
+    }
+}
+
+send "./testAll.sh\n"
+expect {
+    "*ERROR*" {
+        send "\x03"
+        puts "TEST FAILED.\n"
+    }
+    "*file length: 384*" {      
+        send "exit\n"   
+        puts "TEST SUCCEED\n"  
+        exit 0
+    }
+    timeout {
+        exit -1
+    }
+}
