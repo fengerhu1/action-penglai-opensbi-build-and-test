@@ -6,7 +6,7 @@ echo "Entering github work directory"
 wget -c https://ipads.se.sjtu.edu.cn:1313/f/eba7b5d7941848f0a993/?dl=1 -O /rootfs.bin --no-check-certificate
 
 # download Image from storage server.
-wget -c https://ipads.se.sjtu.edu.cn:1313/f/bc1d7c7e958642cfb1db/?dl=1 -O /Image --no-check-certificate
+wget -c https://ipads.se.sjtu.edu.cn:1313/f/cc3be0e1795d468eb35a/?dl=1 -O /Image --no-check-certificate
 
 # download qemu-riscv from storage server.
 wget -c https://ipads.se.sjtu.edu.cn:1313/f/764f9526ba1242f68927/?dl=1 -O /qemu-system-riscv64 --no-check-certificate
